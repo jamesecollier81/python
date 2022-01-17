@@ -25,7 +25,7 @@ conditions = "mobile_phone <> '' and \
             industry <> '' and \
             domain <> '' and \
             state <> '' and \
-            employee_count>0" #have to build a process to group and stratify the employee count#
+            employee_count>0"
 
 # SQL to get the raw data
 df = gbq.read_gbq(
