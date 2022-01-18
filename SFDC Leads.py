@@ -10,7 +10,7 @@ def _getToday():
 
 # static information
 # do not change
-proj_id = project_id = "panoply-455-b68e860f73ff"
+proj_id = project_id = "panoply-###-############"
 filename = "%s_%s.%s" % ("sfdc_leads_analysis", _getToday(), "csv")
 
 #change output directory on your machine
