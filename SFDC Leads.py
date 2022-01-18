@@ -58,7 +58,7 @@ df2['domain'] = np.where(df2['domain'].isnull(), '0', '1')
 grouped=df2.groupby(['first_name','last_name','email','mobile_phone','street','city','state','zip','country','company_name','employee_count','industry','domain'])['id'].count().reset_index()
 print(grouped)
 
-###################
+##################
 # export results
 grouped.to_csv(outpath+filename, index = False)
-###################
+##################
