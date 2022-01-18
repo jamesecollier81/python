@@ -37,7 +37,7 @@ df["mobile_phone"].replace(regex=True, inplace=True, to_replace=r"\D", value=r""
 #print out the dataframe for viewing
 print(df['company_name'])
 
-###################
+##################
 # export results
 df.to_csv(outpath+filename, index = False)
-###################
+##################
