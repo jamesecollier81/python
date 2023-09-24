@@ -22,6 +22,7 @@ y = dataset['ml_flag']
 
 X_train, X_test, y_train, y_test=train_test_split(X, y, test_size=0.10)
 
+#build model with values from previous tuning
 et = ExtraTreesClassifier(bootstrap=False, ccp_alpha=0.0,
                                        class_weight=None, criterion='entropy',
                                        max_depth=None, max_features='sqrt',
@@ -38,6 +39,7 @@ et.fit(X_train, y_train)
 y_pred = et.predict(X_test)
 print('R-square score main model is :', round(r2_score(y_test, y_pred),6))
 
+#confusion matrix plot
 cf_matrix = confusion_matrix(y_test, y_pred)
 group_names = ['True Neg','False Pos','False Neg','True Pos']
 group_counts = ["{0:0.0f}".format(value) for value in
@@ -49,6 +51,7 @@ labels = [f"{v1}\n{v2}\n{v3}" for v1, v2, v3 in
 labels = np.asarray(labels).reshape(2,2)
 sns.heatmap(cf_matrix, annot=labels, fmt='', cmap='binary')
 
+#plot AUC and precision
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
 RocCurveDisplay.from_estimator(et, X_test, y_test, ax=ax1)
@@ -60,6 +63,7 @@ PrecisionRecallDisplay.from_predictions(y_test, y_pred, ax=ax2)
 plt.tight_layout()
 plt.show()
 
+#calc and plot feature importance
 feature_importance = et.feature_importances_
 sorted_idx = np.argsort(feature_importance)[-10::]
 top_10_idx = sorted_idx[:10]
